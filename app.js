@@ -3,6 +3,7 @@ var express = require('express');
 const session = require('express-session')
 var path = require('path');
 var cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser')
 var logger = require('morgan');
 const connectMongo = require('connect-mongo')
 require('./db')
@@ -20,6 +21,8 @@ app.set('superSecret', config.jwt)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser.json());//数据JSON类型
+app.use(bodyParser.urlencoded({ extended: false }));//解析post请求数据
 //  使用 mongo 缓存
 const MongoStore = connectMongo(session)
 app.use(session({

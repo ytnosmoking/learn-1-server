@@ -5,16 +5,16 @@ const config = require('../config')
 const dtime = require('time-formater')
 
 const sign = (user) => jwt.sign(user, config.jwt, {
-  expiresIn: 60 * 5
+  expiresIn: 60 * 60 * 12 //12h
 })
 
 const verify = (token) => {
   return new Promise((resolve, reject) => {
     jwt.verify(token, config.jwt, (err, decoded) => {
       console.log('verify')
-      console.log(err)
+      // console.log(err)
       if (err) {
-        reject(err.message)
+        reject(err)
       }
       resolve(decoded)
     })

@@ -9,5 +9,6 @@ const AdminController = require('../controller/admin')
 router.post('/login', AdminController.login)
 router.post('/register', AdminController.register)
 router.post('/infos', AdminController.checkAuth, AdminController.infos)
+router.post('/update-infos', AdminController.checkAuth, AdminController.updateInfos)
 
 module.exports = router;

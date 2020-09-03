@@ -11,6 +11,7 @@ const adminSchema = new Schema({
   nickname: String,
   user_id: Number,
   create_time: String,
+  update_time: String,
   email: String,
   phone: String,
   wechat: String,
