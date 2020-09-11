@@ -184,6 +184,8 @@ class Admin {
               return res.send(errCode('图片上传失败', 401))
             } else {
               const user_id = req.session.admin_id
+              const oldInfo = await UserInfoModel.findOne({ user_id })
+              // fs.unlinkSync(`${form.uploadDir}${oldInfo.avator}`)
               await UserInfoModel.updateOne({ user_id }, {
                 ...fields, avator: `${UPLOAD_FOLDER}/${newName}`,
                 update_time: dtime().format('YYYY-MM-DD HH:mm:ss:SS')
